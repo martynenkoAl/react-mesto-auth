@@ -49,7 +49,11 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
             <section className="elements">
                 <ul className="elements__container">
                     {cards.map(el => {
-                        return (<Card card={el} onCardClick={onCardClick}/>)
+                        return (
+                            <li key={ el._id }>
+                                <Card card={el} onCardClick={onCardClick}/>
+                            </li>
+                        )
                     })}
                 </ul>
             </section>
