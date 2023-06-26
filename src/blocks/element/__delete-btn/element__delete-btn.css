@@ -1,7 +1,6 @@
 .element__delete-btn {
   width: 18px;
   height: 19px;
-  background-image: url(../../../images/trash.svg);
   background-repeat: no-repeat;
   background-color: transparent;
   border: none;

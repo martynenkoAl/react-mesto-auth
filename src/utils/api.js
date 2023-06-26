@@ -34,10 +34,7 @@ class Api {
       return fetch(`${this._url}/users/me`, {
         method: 'PATCH',
         headers: this._headers,
-        body: JSON.stringify({
-          name: data.username,
-          about: data.job
-        })
+        body: JSON.stringify(data)
       })
       .then(this._getResponseData);
     }
@@ -46,9 +43,7 @@ class Api {
       return fetch(`${this._url}/users/me/avatar`, {
         method: 'PATCH',
         headers: this._headers,
-        body: JSON.stringify({
-          avatar: data.avatarpicture
-        })
+        body: JSON.stringify(data)
       })
       .then(this._getResponseData);
     }
@@ -57,10 +52,7 @@ class Api {
       return fetch(`${this._url}/cards`, {
         method: 'POST',
         headers: this._headers,
-        body: JSON.stringify({
-          name: data.place,
-          link: data.link
-        })
+        body: JSON.stringify(data)
       })
       .then(this._getResponseData);
     }
@@ -75,19 +67,9 @@ class Api {
       .then(this._getResponseData);
     }
   
-    putLike(cardId) {
-      return fetch(`${this._url}/cards/${cardId}/likes`, {
-        method: 'PUT',
-        headers: {
-          authorization: this._authorization
-        }
-      })
-      .then(this._getResponseData);
-    }
-  
-    deleteLike(cardId) {
+    toggleLike(cardId, isLiked) {
       return fetch(`${this._url}/cards/${cardId}/likes `, {
-        method: 'DELETE',
+        method: `${isLiked ? 'PUT' : 'DELETE'}`,
         headers: {
           authorization: this._authorization
         }
@@ -95,6 +77,7 @@ class Api {
       .then(this._getResponseData);
     }
   }
+
 
   const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-66',
