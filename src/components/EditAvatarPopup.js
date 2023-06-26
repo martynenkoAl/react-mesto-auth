@@ -3,6 +3,7 @@ import PopupWithForm from './PopupWithForm';
 
 function EditAvatarPopup({isOpen, onClose, isLoading, onUpdateAvatar}) {
     const avatarRef = useRef();
+
     useEffect(() => {
         avatarRef.current.value = "";
     }, [isOpen]);
@@ -12,9 +13,9 @@ function EditAvatarPopup({isOpen, onClose, isLoading, onUpdateAvatar}) {
         onUpdateAvatar({
           avatar: avatarRef.current.value
         });
-      }
+    }
 
-      function handleChangeAvatar() {
+    function handleChangeAvatar() {
         return avatarRef.current.value;
     }
 
@@ -22,19 +23,19 @@ function EditAvatarPopup({isOpen, onClose, isLoading, onUpdateAvatar}) {
     return (
         <PopupWithForm title="Обновить аватар" name="avatarform" btntext={isLoading ? 'Сохранение...' : 'Сохранить'} isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit}>
           <label className="popup__field">
-                  <input
-                    id="avatar-input"
-                    type="url"
-                    name="avatarpicture"
-                    placeholder="Ссылка на аватар"
-                    className="popup__text popup__text_type_avatar"
-                    required
-                    onChange={handleChangeAvatar}
-                    ref={avatarRef}
-                  />
-                  <span className="popup__text-error_avatarpicture popup__text-error" />
-                </label>
-          </PopupWithForm>
+              <input
+                id="avatar-input"
+                type="url"
+                name="avatarpicture"
+                placeholder="Ссылка на аватар"
+                className="popup__text popup__text_type_avatar"
+                required
+                onChange={handleChangeAvatar}
+                ref={avatarRef}
+              />
+              <span className="popup__text-error_avatarpicture popup__text-error" />
+          </label>
+        </PopupWithForm>
     )
 }
 

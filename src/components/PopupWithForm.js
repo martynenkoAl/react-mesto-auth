@@ -5,13 +5,9 @@ function PopupWithForm({title, name, btntext, children, isOpen, onClose, onSubmi
                 <h3 className="popup__title">{title}</h3>
                 <form action="" className="popup__form" name="popupForm" onSubmit={onSubmit} noValidate>
                     {children}
-                <button
-                    type="submit"
-                    aria-label="Отправить"
-                    className="popup__submit-btn"
-                >
+                    <button type="submit" aria-label="Отправить" className="popup__submit-btn">
                     {btntext}
-                </button>
+                    </button>
                 </form>
                 <button type="button" aria-label="Закрыть" className="popup__close" onClick={onClose} />
             </div>

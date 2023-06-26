@@ -97,14 +97,14 @@ function App() {
 
 
 
-    useEffect(() => {
-      Promise.all([api.getInfo(), api.getInitialCards()])
-          .then(([user, card]) => {
-            setCurrentUser(user)
-            setCards(card)
-          })
-          .catch(console.error);
-      }, []);
+  useEffect(() => {
+    Promise.all([api.getInfo(), api.getInitialCards()])
+        .then(([user, card]) => {
+          setCurrentUser(user)
+          setCards(card)
+        })
+        .catch(console.error);
+    }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

@@ -26,10 +26,10 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike,
                 <p className="profile__job">{currentUser.about}</p>
                 </div>
                 <button
-                className="profile__add-btn"
-                aria-label="Добавить"
-                type="button"
-                onClick={onAddPlace}
+                    className="profile__add-btn"
+                    aria-label="Добавить"
+                    type="button"
+                    onClick={onAddPlace}
                 />
             </section>
             <section className="elements">

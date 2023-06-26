@@ -11,14 +11,14 @@ function Card({card, onCardClick, onCardLike, onCardDelete }) {
     function handleCardClick() {
         onCardClick(card);
       }
-    
-      function handleLikeClick() {
-        onCardLike(card);
-      }
-    
-      function handleDeleteClick() {
-        onCardDelete(card);
-      }
+
+    function handleLikeClick() {
+    onCardLike(card);
+    }
+
+    function handleDeleteClick() {
+    onCardDelete(card);
+    }
 
     return (
     <div className="element">
