@@ -1,13 +1,18 @@
-function ImagePopup({card, onClose}) {
-    return (
-    <div className={`popup popup_image popup_dark ${card && 'popup_opened'}`}>
+function ImagePopup({ card, onClose }) {
+  return (
+    <div className={`popup popup_image popup_dark ${card && "popup_opened"}`}>
       <div className="popup__display">
-        <img src={card?.link} alt="Изображение" className="popup__photo" />
+        <img src={card?.link} alt={card?.name} className="popup__photo" />
         <h4 className="popup__placename">{card?.name}</h4>
-        <button type="button" aria-label="Закрыть" className="popup__close" onClick={onClose} />
+        <button
+          type="button"
+          aria-label="Закрыть"
+          className="popup__close"
+          onClick={onClose}
+        />
       </div>
     </div>
-    )
+  );
 }
 
 export default ImagePopup;
