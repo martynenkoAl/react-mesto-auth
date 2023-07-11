@@ -31,7 +31,7 @@ const Register = ({ onSignUp }) => {
         noValidate
         action=""
         className="popup__form"
-        name="popupForm"
+        name="form-register"
         onSubmit={handleSubmit}
       >
         <h2 className="auth__title">Регистрация</h2>

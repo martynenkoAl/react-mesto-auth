@@ -30,7 +30,7 @@ const Login = ({ onSignIn }) => {
         noValidate
         action=""
         className="popup__form"
-        name="popupForm"
+        name="form-login"
         onSubmit={handleSubmit}
       >
         <h2 className="auth__title">Вход</h2>

@@ -1,8 +1,11 @@
 import React from "react";
 import pass from "../images/pass.png";
 import fail from "../images/fail.png";
+import { usePopupClose } from "../hooks/usePopupClose";
 
 function InfoTooltip({ onClose, isOpen, isSuccess }) {
+  usePopupClose(isOpen, onClose);
+
   return (
     <div className={`popup popup_info ${isOpen && "popup_opened"}`}>
       <div className="popup__container popup__container_info">

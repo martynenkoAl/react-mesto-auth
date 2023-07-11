@@ -1,3 +1,5 @@
+import { usePopupClose } from "../hooks/usePopupClose";
+
 function PopupWithForm({
   title,
   name,
@@ -7,6 +9,8 @@ function PopupWithForm({
   onClose,
   onSubmit,
 }) {
+  usePopupClose(isOpen, onClose);
+
   return (
     <div className={`popup popup_${name} ${isOpen && "popup_opened"}`}>
       <div className="popup__container">
@@ -14,7 +18,7 @@ function PopupWithForm({
         <form
           action=""
           className="popup__form"
-          name="popupForm"
+          name={`form-${name}`}
           onSubmit={onSubmit}
         >
           {children}

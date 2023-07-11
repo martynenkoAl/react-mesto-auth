@@ -6,7 +6,6 @@ import * as auth from "../utils/auth.js";
 import Header from "./Header.js";
 import Main from "./Main.js";
 import Footer from "./Footer.js";
-import PopupWithForm from "./PopupWithForm.js";
 import ImagePopup from "./ImagePopup.js";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup.js";
@@ -31,24 +30,8 @@ function App() {
   const [headerEmail, setHeaderEmail] = useState("");
   const navigate = useNavigate();
 
-  function handleEditProfileClick() {
-    setIsEditProfilePopupOpen(true);
-  }
-
-  function handleAddPlaceClick() {
-    setIsAddPlacePopupOpen(true);
-  }
-
-  function handleEditAvatarClick() {
-    setIsEditAvatarPopupOpen(true);
-  }
-
   function handleCardClick(card) {
     setSelectedCard(card);
-  }
-
-  function handleInfoPopupOpen() {
-    setIsInfoPopupOpen(true);
   }
 
   function closeAllPopups() {
@@ -162,7 +145,7 @@ function App() {
         console.log(`Ошибка: ${error}`);
       })
       .finally(() => {
-        handleInfoPopupOpen();
+        setIsInfoPopupOpen(true);
       });
   }
 
@@ -176,7 +159,7 @@ function App() {
       })
       .catch((error) => {
         setIsInfoTooltipSuccess(false);
-        handleInfoPopupOpen();
+        setIsInfoPopupOpen(true);
         console.log(`Ошибка: ${error}`);
       });
   }
@@ -192,9 +175,9 @@ function App() {
               element={
                 <ProtectedRoute
                   element={Main}
-                  onEditAvatar={handleEditAvatarClick}
-                  onAddPlace={handleAddPlaceClick}
-                  onEditProfile={handleEditProfileClick}
+                  onEditAvatar={setIsEditAvatarPopupOpen}
+                  onAddPlace={setIsAddPlacePopupOpen}
+                  onEditProfile={setIsEditProfilePopupOpen}
                   onCardClick={handleCardClick}
                   onCardLike={handleCardLike}
                   onCardDelete={handleCardDelete}
@@ -232,11 +215,6 @@ function App() {
             isLoading={isLoading}
             isOpen={isAddPlacePopupOpen}
           />
-          <PopupWithForm
-            title="Вы уверены?"
-            name="confirm"
-            btntext="Да"
-          ></PopupWithForm>
           <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}
             onClose={closeAllPopups}

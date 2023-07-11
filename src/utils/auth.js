@@ -4,8 +4,12 @@ const getResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 };
 
+function request(url, options) {
+  return fetch(`${BASE_URL}${url}`, options).then(getResponse);
+}
+
 export const register = (email, password) => {
-  return fetch(`${BASE_URL}/signup`, {
+  return request(`/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -14,11 +18,11 @@ export const register = (email, password) => {
       email: email,
       password: password,
     }),
-  }).then((res) => getResponse(res));
+  });
 };
 
 export const login = (email, password) => {
-  return fetch(`${BASE_URL}/signin`, {
+  return request(`/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -27,15 +31,15 @@ export const login = (email, password) => {
       email: email,
       password: password,
     }),
-  }).then((res) => getResponse(res));
+  });
 };
 
 export const getContent = (token) => {
-  return fetch(`${BASE_URL}/users/me`, {
+  return request(`/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-  }).then((res) => getResponse(res));
+  });
 };
